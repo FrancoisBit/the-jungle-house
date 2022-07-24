@@ -1,32 +1,36 @@
-import { useState } from 'react'
+import { useState } from 'react';
 
-import { plantList } from '../data/plantList'
-import PlantItem from './PlantItem'
-import Categories from './Categories'
+import { plantList } from '../data/plantList';
+import PlantItem from './PlantItem';
+import Categories from './Categories';
 
-import '../css/ShoppingList.css'
+import '../css/ShoppingList.css';
 
 function ShoppingList({ cart, updateCart }) {
-    const [activeCategory, setActiveCategory] = useState('')
+    const [activeCategory, setActiveCategory] = useState('');
 
 	const categories = plantList.reduce(
 		(acc, plant) =>
 			acc.includes(plant.category) ? acc : acc.concat(plant.category),
 		[]
-	)
+	);
 
     function addToCart(name, price) {
-		const currentPlantSaved = cart.find((plant) => plant.name === name)
+		const currentPlantSaved = cart.find((plant) => plant.name === name);
+
 		if (currentPlantSaved) {
 			const cartFilteredCurrentPlant = cart.filter(
 				(plant) => plant.name !== name
-			)
+			);
+
 			updateCart([
 				...cartFilteredCurrentPlant,
 				{ name, price, amount: currentPlantSaved.amount + 1 }
-			])
-		} else {
-			updateCart([...cart, { name, price, amount: 1 }])
+			]);
+		} 
+        
+        else {
+			updateCart([...cart, { name, price, amount: 1 }]);
 		}
 	}
 
@@ -49,7 +53,7 @@ function ShoppingList({ cart, updateCart }) {
 								light={light}
 								price={price}
 							/>
-							<button onClick={() => addToCart(name, price)}>Ajouter</button>
+							<button onClick={() => addToCart(name, price)}>Add to cart</button>
 						</div>
 					) : null
 				)}

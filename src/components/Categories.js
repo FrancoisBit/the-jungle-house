@@ -1,4 +1,4 @@
-import '../css/Categories.css'
+import '../css/Categories.css';
 
 function Categories({ setActiveCategory, categories, activeCategory }) {
 	return (
@@ -15,7 +15,7 @@ function Categories({ setActiveCategory, categories, activeCategory }) {
 					</option>
 				))}
 			</select>
-			<button onClick={() => setActiveCategory('')}>Réinitialiser</button>
+			<button onClick={() => setActiveCategory('')}>Reinitialize</button>
 		</div>
 	)
 }

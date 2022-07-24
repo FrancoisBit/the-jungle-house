@@ -1,10 +1,10 @@
-import CareScale from "./CareScale"
-import "../css/PlantItem.css"
+import CareScale from "./CareScale";
+import "../css/PlantItem.css";
 
 function PlantItem({ id, cover, name, water, light, price }) {
 
 	return (
-		<li className="plant-item" onClick={handleClick}>
+		<li className="plant-item">
 			<span className='plant-item-price'>{price}€</span>
 			<img className="plant-item-cover" src={cover} alt={"${name} cover"} />
 			{name}
@@ -14,10 +14,6 @@ function PlantItem({ id, cover, name, water, light, price }) {
 			</div>
 		</li>
 	)
-}
-
-function handleClick() {
-    console.log('✨ Ceci est un clic ✨')
 }
 
 export default PlantItem

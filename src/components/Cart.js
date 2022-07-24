@@ -1,15 +1,15 @@
-import { useState, useEffect } from 'react'
-import '../css/Cart.css'
+import { useState, useEffect } from 'react';
+import '../css/Cart.css';
 
 function Cart({ cart, updateCart }) {
-	const [isOpen, setIsOpen] = useState(true)
+	const [isOpen, setIsOpen] = useState(true);
 	const total = cart.reduce(
 		(acc, plantType) => acc + plantType.amount * plantType.price,
 		0
-	)
+	);
 	useEffect(() => {
 		document.title = `LMJ: ${total}€ d'achats`
-	}, [total])
+	}, [total]);
 
 	return isOpen ? (
 		<div className='cart'>
@@ -17,11 +17,11 @@ function Cart({ cart, updateCart }) {
 				className='cart-toggle-button'
 				onClick={() => setIsOpen(false)}
 			>
-				Fermer
+				Close
 			</button>
 			{cart.length > 0 ? (
 				<div>
-					<h2>Panier</h2>
+					<h2>Basket</h2>
 					<ul>
 						{cart.map(({ name, price, amount }, index) => (
 							<div key={`${name}-${index}`}>
@@ -30,10 +30,10 @@ function Cart({ cart, updateCart }) {
 						))}
 					</ul>
 					<h3>Total :{total}€</h3>
-					<button onClick={() => updateCart([])}>Vider le panier</button>
+					<button onClick={() => updateCart([])}>Empty the basket</button>
 				</div>
 			) : (
-				<div>Votre panier est vide</div>
+				<div>Your basket is empty</div>
 			)}
 		</div>
 	) : (
@@ -42,7 +42,7 @@ function Cart({ cart, updateCart }) {
 				className='cart-toggle-button'
 				onClick={() => setIsOpen(true)}
 			>
-				Ouvrir le Panier
+				Open the basket
 			</button>
 		</div>
 	)

@@ -1,26 +1,26 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect } from "react";
 
-import Banner from "./Banner"
-import Cart from "./Cart"
-import ShoppingList from "./ShoppingList"
-import Footer from './Footer'
+import Banner from "./Banner";
+import Cart from "./Cart";
+import ShoppingList from "./ShoppingList";
+import Footer from './Footer';
 
-import '../css/Layout.css'
+import '../css/Layout.css';
 
 function App() {
-	const savedCart = localStorage.getItem('cart')
-	const [cart, updateCart] = useState(savedCart != 0 ? JSON.parse(savedCart) : [])
+	const savedCart = localStorage.getItem('cart');
+	const [cart, updateCart] = useState(savedCart != 0 ? JSON.parse(savedCart) : []);
 
 	useEffect(() => {
-		localStorage.setItem('cart', JSON.stringify(cart))
-	}, [cart])
+		localStorage.setItem('cart', JSON.stringify(cart));
+	}, [cart]);
 
     return (
 		<div>
 			<Banner/>
 			<div className="layout-inner">
-				<Cart cart={cart} updateCart={updateCart} />
-                <ShoppingList cart={cart} updateCart={updateCart} />
+				<Cart cart={cart} updateCart={updateCart}/>
+                <ShoppingList cart={cart} updateCart={updateCart}/>
 			</div>
 			<Footer/>
 		</div>
