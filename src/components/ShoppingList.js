@@ -10,6 +10,8 @@ function ShoppingList() {
 		[]
 	)
 
+    console.log(categories)
+
 	return (
 		<div>
 			<ul>
