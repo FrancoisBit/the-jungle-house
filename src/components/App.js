@@ -1,16 +1,24 @@
+import { useState } from 'react'
+
 import Banner from "./Banner"
 import Cart from "./Cart"
 import ShoppingList from "./ShoppingList"
 import Footer from './Footer'
 
+import '../css/Layout.css'
+
 function App() {
+	const [cart, updateCart] = useState([])
+
     return (
-      	<div>
-        	<Banner/>
-        	<Cart/>
-			<ShoppingList/>
+		<div>
+			<Banner/>
+			<div className="layout-inner">
+				<Cart cart={cart} updateCart={updateCart} />
+                <ShoppingList cart={cart} updateCart={updateCart} />
+			</div>
 			<Footer/>
-      	</div>
+		</div>
     )
 }
 
